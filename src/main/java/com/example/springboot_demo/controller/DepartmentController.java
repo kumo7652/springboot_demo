@@ -4,10 +4,7 @@ import com.example.springboot_demo.pojo.Department;
 import com.example.springboot_demo.pojo.Result;
 import com.example.springboot_demo.service.DepartmentService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -37,6 +34,19 @@ public class DepartmentController {
     public Result deleteDepartments(@RequestParam Integer id){
         try {
             departmentService.deleteDepartment(id);
+            return Result.success();
+        }catch (Exception e){
+            return Result.error(e.getMessage());
+        }
+    }
+
+    /**
+     * 添加部门信息
+     */
+    @PostMapping("/departments")
+    public Result addDepartment(@RequestBody Department department){
+        try {
+            departmentService.addDepartment(department);
             return Result.success();
         }catch (Exception e){
             return Result.error(e.getMessage());

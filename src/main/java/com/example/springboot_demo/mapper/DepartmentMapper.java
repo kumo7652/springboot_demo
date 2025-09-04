@@ -17,4 +17,9 @@ public interface DepartmentMapper {
      * 删除部门信息
      */
     void deleteDepartmentById(Integer id);
+
+    /**
+     * 添加部门信息
+     */
+    void addDepartment(Department department);
 }
