@@ -17,4 +17,10 @@
         from dept
         order by update_time desc
     </select>
+
+    <select id="getDepartmentById" resultType="com.example.springboot_demo.pojo.Department">
+        select *
+        from dept
+        where id = #{id}
+    </select>
 </mapper>

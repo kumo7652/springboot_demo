@@ -32,4 +32,9 @@ public class DepartmentServiceImpl implements DepartmentService {
 
         departmentMapper.addDepartment(department);
     }
+
+    @Override
+    public Department getDepartmentById(Integer id){
+        return departmentMapper.getDepartmentById(id);
+    }
 }

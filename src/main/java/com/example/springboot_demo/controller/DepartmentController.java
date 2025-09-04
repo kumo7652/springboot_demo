@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/departments")
 public class DepartmentController {
 
     private final DepartmentService departmentService;
@@ -17,7 +18,7 @@ public class DepartmentController {
     /**
      * 查询所有部门数据
      */
-    @GetMapping("/departments")
+    @GetMapping
     public Result getDepartments(){
         try{
             List<Department> list = departmentService.getDepartments();
@@ -27,10 +28,20 @@ public class DepartmentController {
         }
     }
 
+    @GetMapping("/{id}")
+    public Result getDepartmentById(@PathVariable Integer id){
+        try{
+            Department department = departmentService.getDepartmentById(id);
+            return Result.success(department);
+        }catch (Exception e){
+            return Result.error(e.getMessage());
+        }
+    }
+
     /**
      * 删除部门信息
      */
-    @DeleteMapping("/departments")
+    @DeleteMapping
     public Result deleteDepartments(@RequestParam Integer id){
         try {
             departmentService.deleteDepartment(id);
@@ -43,7 +54,7 @@ public class DepartmentController {
     /**
      * 添加部门信息
      */
-    @PostMapping("/departments")
+    @PostMapping
     public Result addDepartment(@RequestBody Department department){
         try {
             departmentService.addDepartment(department);
