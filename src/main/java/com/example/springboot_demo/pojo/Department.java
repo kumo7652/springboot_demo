@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Department {
-    private Integer ID;                     // 部门ID
+    private Integer id;                     // 部门ID
     private String name;                    // 部门名称
     private LocalDateTime createTime;       // 创建时期
     private LocalDateTime updateTime;       // 修改时期

@@ -13,5 +13,8 @@ public interface DepartmentMapper {
      */
     List<Department> getDepartments();
 
-
+    /**
+     * 删除部门信息
+     */
+    void deleteDepartmentById(Integer id);
 }
