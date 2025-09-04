@@ -1,4 +1,4 @@
-package com.neuedu.springboot_demo.pojo;
+package com.example.springboot_demo.pojo;
 
 import lombok.Data;
 
@@ -7,9 +7,9 @@ import lombok.Data;
  */
 @Data
 public class Result {
-    private int code;
-    private String msg;
-    private Object data;
+    private int code;       // 状态码，1为成功，0为失败
+    private String msg;     // 错误信息
+    private Object data;    // 数据
 
     public static Result success(){
         Result result = new Result();
