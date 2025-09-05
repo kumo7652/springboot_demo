@@ -4,10 +4,12 @@ import com.example.springboot_demo.pojo.Department;
 import com.example.springboot_demo.pojo.Result;
 import com.example.springboot_demo.service.DepartmentService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/departments")
@@ -70,7 +72,7 @@ public class DepartmentController {
     /**
      * 更新部门信息功能
      */
-    @PutMapping()
+    @PutMapping
     public Result updateDepartment(@RequestBody Department department){
         try {
             departmentService.updateDepartment(department);
