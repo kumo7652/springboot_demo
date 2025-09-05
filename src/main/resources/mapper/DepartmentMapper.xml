@@ -7,19 +7,28 @@
         values(#{name},#{createTime},#{updateTime})
     </insert>
 
+    <update id="updateDepartment">
+        update dept
+        <set>
+            name = #{name},
+            update_time = #{updateTime}
+        </set>
+        <where> id = #{id} </where>
+    </update>
+
     <delete id="deleteDepartmentById">
         delete from dept
         where id = #{id}
     </delete>
 
     <select id="getDepartments" resultType="com.example.springboot_demo.pojo.Department">
-        select *
+        select id, name, create_time, update_time
         from dept
         order by update_time desc
     </select>
 
     <select id="getDepartmentById" resultType="com.example.springboot_demo.pojo.Department">
-        select *
+        select id, name, create_time, update_time
         from dept
         where id = #{id}
     </select>

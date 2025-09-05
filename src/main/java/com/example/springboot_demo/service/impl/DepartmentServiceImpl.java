@@ -37,4 +37,11 @@ public class DepartmentServiceImpl implements DepartmentService {
     public Department getDepartmentById(Integer id){
         return departmentMapper.getDepartmentById(id);
     }
+
+    @Override
+    public void updateDepartment(Department department) {
+        department.setUpdateTime(LocalDateTime.now());
+
+        departmentMapper.updateDepartment(department);
+    }
 }

@@ -13,6 +13,9 @@ public interface DepartmentMapper {
      */
     List<Department> getDepartments();
 
+    /**
+     * 通过id查询部门信息
+     */
     Department getDepartmentById(Integer id);
 
     /**
@@ -24,4 +27,9 @@ public interface DepartmentMapper {
      * 添加部门信息
      */
     void addDepartment(Department department);
+
+    /**
+     * 更新部门信息
+     */
+    void updateDepartment(Department department);
 }

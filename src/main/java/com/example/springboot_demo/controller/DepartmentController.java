@@ -28,6 +28,9 @@ public class DepartmentController {
         }
     }
 
+    /**
+     * 查询回显功能
+     */
     @GetMapping("/{id}")
     public Result getDepartmentById(@PathVariable Integer id){
         try{
@@ -58,6 +61,19 @@ public class DepartmentController {
     public Result addDepartment(@RequestBody Department department){
         try {
             departmentService.addDepartment(department);
+            return Result.success();
+        }catch (Exception e){
+            return Result.error(e.getMessage());
+        }
+    }
+
+    /**
+     * 更新部门信息功能
+     */
+    @PutMapping()
+    public Result updateDepartment(@RequestBody Department department){
+        try {
+            departmentService.updateDepartment(department);
             return Result.success();
         }catch (Exception e){
             return Result.error(e.getMessage());
