@@ -22,4 +22,7 @@ public class Employee {
     private LocalDateTime createTime;       // 创建时期
     private LocalDateTime updateTime;       // 修改时期
     private Integer deptId;                 // 所属部门id
+
+    // 用于封装部门名称属性
+    private String deptName;
 }

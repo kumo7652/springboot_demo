@@ -4,7 +4,19 @@
 <mapper namespace="com.example.springboot_demo.mapper.EmployeeMapper">
 
     <select id="getEmployees" resultType="com.example.springboot_demo.pojo.Employee">
-        select id, username, password, gender, phone, job, salary, entry_date, create_time, update_time, dept_id
-        from emp
+        select e.*, dept.name as deptName
+        from emp e join dept on e.dept_id = dept.id
+#         order by entry_date desc
+        <where>
+            <if test = "name !=null and name != ''">
+                e.name like concat('%', #{name}, '%') # 使用参数化会变成%?%全占位符
+            </if>
+            <if test = "gender != null">
+                and gender = #{gender}
+            </if>
+            <if test = "start != null and end != null">
+                and entry_date between #{start} and #{end}
+            </if>
+        </where>
     </select>
 </mapper>
