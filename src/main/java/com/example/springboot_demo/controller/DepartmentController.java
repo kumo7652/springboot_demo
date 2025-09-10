@@ -22,10 +22,13 @@ public class DepartmentController {
      */
     @GetMapping
     public Result getDepartments(){
+        log.info("查询部门信息");
+
         try{
             List<Department> list = departmentService.getDepartments();
             return Result.success(list);
         }catch (Exception e){
+            log.error(e.getMessage());
             return Result.error(e.getMessage());
         }
     }
@@ -35,10 +38,13 @@ public class DepartmentController {
      */
     @GetMapping("/{id}")
     public Result getDepartmentById(@PathVariable Integer id){
+        log.info("查询id为{}的部门", id);
+
         try{
             Department department = departmentService.getDepartmentById(id);
             return Result.success(department);
         }catch (Exception e){
+            log.error(e.getMessage());
             return Result.error(e.getMessage());
         }
     }
@@ -48,10 +54,13 @@ public class DepartmentController {
      */
     @DeleteMapping
     public Result deleteDepartments(@RequestParam Integer id){
+        log.info("删除id为{}的部门", id);
+
         try {
             departmentService.deleteDepartment(id);
             return Result.success();
         }catch (Exception e){
+            log.error(e.getMessage());
             return Result.error(e.getMessage());
         }
     }
@@ -61,10 +70,13 @@ public class DepartmentController {
      */
     @PostMapping
     public Result addDepartment(@RequestBody Department department){
+        log.info("添加部门{}", department);
+
         try {
             departmentService.addDepartment(department);
             return Result.success();
         }catch (Exception e){
+            log.error(e.getMessage());
             return Result.error(e.getMessage());
         }
     }
@@ -74,10 +86,13 @@ public class DepartmentController {
      */
     @PutMapping
     public Result updateDepartment(@RequestBody Department department){
+        log.info("更新部门信息{}", department);
+
         try {
             departmentService.updateDepartment(department);
             return Result.success();
         }catch (Exception e){
+            log.error(e.getMessage());
             return Result.error(e.getMessage());
         }
     }

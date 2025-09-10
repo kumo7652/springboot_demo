@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springboot_demo.mapper.EmpExprMapper">
+
+    <insert id="insertEmpExpr">
+        insert into emp_expr(emp_id, company, job, start, end) values
+        <foreach collection="empExpr" item="expr" separator=",">
+            (#{expr.empId}, #{expr.company}, #{expr.job},
+                   #{expr.start}, #{expr.end})
+        </foreach>
+    </insert>
+</mapper>

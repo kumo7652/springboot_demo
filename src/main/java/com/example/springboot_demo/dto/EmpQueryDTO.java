@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class EmpDTO {
+public class EmpQueryDTO {
     private String name;
     private Short gender;
     private LocalDate start;

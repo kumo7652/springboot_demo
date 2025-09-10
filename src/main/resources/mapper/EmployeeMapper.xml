@@ -2,11 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.springboot_demo.mapper.EmployeeMapper">
+    <insert id="addEmployee" useGeneratedKeys="true" keyProperty="id">
+        insert into emp (username, password, gender, phone, job, salary, entry_date,
+                         create_time, update_time, image, dept_id)
+        value (#{username}, #{password}, #{gender}, #{phone}, #{job}, #{salary},
+               #{entryDate}, #{createTime}, #{updateTime}, #{image}, #{deptId})
+    </insert>
 
     <select id="getEmployees" resultType="com.example.springboot_demo.pojo.Employee">
         select e.*, dept.name as deptName
         from emp e join dept on e.dept_id = dept.id
-#         order by entry_date desc
+        order by entry_date desc
         <where>
             <if test = "name !=null and name != ''">
                 e.name like concat('%', #{name}, '%') # 使用参数化会变成%?%全占位符

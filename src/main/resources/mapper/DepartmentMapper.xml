@@ -4,7 +4,7 @@
 <mapper namespace="com.example.springboot_demo.mapper.DepartmentMapper">
     <insert id="addDepartment">
         insert into dept(name, create_time, update_time)
-        values(#{name},#{createTime},#{updateTime})
+        value(#{name},#{createTime},#{updateTime})
     </insert>
 
     <update id="updateDepartment">
