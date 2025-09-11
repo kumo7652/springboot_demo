@@ -13,6 +13,9 @@ public interface EmployeeMapper {
      */
     List<Employee> getEmployees(EmpQueryDTO empQueryDTO);
 
+    /**
+     * 通过id查询员工与其对应的工作经历信息
+     */
     Employee getEmployeeById(Integer id);
 
     /**
@@ -24,4 +27,9 @@ public interface EmployeeMapper {
      * 删除员工信息
      */
     void deleteEmployees(List<Integer> ids);
+
+    /**
+     * 更新员工信息
+     */
+    void updateEmployee(Employee employee);
 }

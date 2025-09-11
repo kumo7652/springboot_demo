@@ -27,4 +27,9 @@ public interface EmployeeService {
      * 通过id查询员工信息与对应的工作经历信息
      */
     Employee getEmployeeById(Integer id);
+
+    /**
+     * 更新员工信息与工作经历信息
+     */
+    void updateEmployee(Employee employee);
 }

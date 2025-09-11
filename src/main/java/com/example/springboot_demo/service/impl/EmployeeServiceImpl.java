@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -65,5 +66,23 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee getEmployeeById(Integer id) {
         return employeeMapper.getEmployeeById(id);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void updateEmployee(Employee e) {
+        // 1.更新员工基本信息
+        employeeMapper.updateEmployee(e);
+
+        // 2.更新员工工作经历信息-先清空，再添加
+        List<EmpExpr> exprList = e.getExprList();
+        if (exprList != null && !exprList.isEmpty()) {
+            empExprMapper.deleteEmpExpr(Collections.singletonList(e.getId()));
+
+            for (EmpExpr expr : exprList) {
+                expr.setEmpId(e.getId());
+                empExprMapper.insertEmpExpr(exprList);
+            }
+        }
     }
 }

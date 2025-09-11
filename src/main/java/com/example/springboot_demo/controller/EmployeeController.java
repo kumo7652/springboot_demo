@@ -81,4 +81,17 @@ public class EmployeeController {
             return Result.error(e.getMessage());
         }
     }
+
+    @PutMapping
+    public Result updateEmployee(@RequestBody Employee employee) {
+        log.info("更新员工{}", employee);
+
+        try{
+            employeeService.updateEmployee(employee);
+            return Result.success();
+        }catch (Exception e){
+            log.error(e.getMessage());
+            return Result.error(e.getMessage());
+        }
+    }
 }
