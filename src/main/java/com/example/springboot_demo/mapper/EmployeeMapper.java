@@ -13,5 +13,15 @@ public interface EmployeeMapper {
      */
     List<Employee> getEmployees(EmpQueryDTO empQueryDTO);
 
+    Employee getEmployeeById(Integer id);
+
+    /**
+     * 添加员工信息
+     */
     void addEmployee(Employee employee);
+
+    /**
+     * 删除员工信息
+     */
+    void deleteEmployees(List<Integer> ids);
 }

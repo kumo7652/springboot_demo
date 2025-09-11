@@ -54,4 +54,16 @@ public class EmployeeServiceImpl implements EmployeeService {
             empExprMapper.insertEmpExpr(exprList);
         }
     }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void deleteEmployees(List<Integer> ids) {
+        employeeMapper.deleteEmployees(ids);
+        empExprMapper.deleteEmpExpr(ids);
+    }
+
+    @Override
+    public Employee getEmployeeById(Integer id) {
+        return employeeMapper.getEmployeeById(id);
+    }
 }

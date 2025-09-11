@@ -4,10 +4,19 @@
 <mapper namespace="com.example.springboot_demo.mapper.EmpExprMapper">
 
     <insert id="insertEmpExpr">
-        insert into emp_expr(emp_id, company, job, start, end) values
+        insert into emp_expr(emp_id, company, job, start, end)
+        values
         <foreach collection="empExpr" item="expr" separator=",">
             (#{expr.empId}, #{expr.company}, #{expr.job},
                    #{expr.start}, #{expr.end})
         </foreach>
     </insert>
+
+    <delete id="deleteEmpExpr">
+        delete from emp_expr
+        where emp_id in
+        <foreach collection="empIds" item="empId" open="(" separator="," close=")">
+            #{empId}
+        </foreach>
+    </delete>
 </mapper>
