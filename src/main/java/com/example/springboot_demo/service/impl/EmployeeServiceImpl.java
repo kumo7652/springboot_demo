@@ -48,9 +48,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         List<EmpExpr> exprList = e.getExprList();
         if (exprList != null && !exprList.isEmpty()) {
             // 为工作经历信息绑定员工id
-            for (EmpExpr expr : exprList) {
-                expr.setEmpId(e.getId());
-            }
+            for (EmpExpr expr : exprList) expr.setEmpId(e.getId());
 
             empExprMapper.insertEmpExpr(exprList);
         }
@@ -79,10 +77,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (exprList != null && !exprList.isEmpty()) {
             empExprMapper.deleteEmpExpr(Collections.singletonList(e.getId()));
 
-            for (EmpExpr expr : exprList) {
-                expr.setEmpId(e.getId());
-                empExprMapper.insertEmpExpr(exprList);
-            }
+            for (EmpExpr expr : exprList) expr.setEmpId(e.getId());
+
+            empExprMapper.insertEmpExpr(exprList);
         }
     }
 }
