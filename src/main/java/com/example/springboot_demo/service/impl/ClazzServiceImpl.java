@@ -10,6 +10,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 
@@ -49,11 +50,19 @@ public class ClazzServiceImpl implements ClazzService {
         return new PageResult<>(p.getTotal(), p.getResult());
     }
 
+    @Override
+    @Transactional(rollbackFor = Exception.class)
     public void deleteClazz(Integer id) {
         // 查询该班级中是否有学生
         if (studentMapper.getStudentInClazz(id) != 0)
             throw new IllegalArgumentException("班级下有学院，不能直接删除~");
 
         clazzMapper.deleteClazz(id);
+    }
+
+    @Override
+    public void insertClazz(Clazz clazz) {
+        if (clazz.getName() == null) throw new IllegalArgumentException("班级为空，无法添加~");
+        clazzMapper.insertClazz(clazz);
     }
 }
