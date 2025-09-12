@@ -7,6 +7,19 @@
         value (#{name},#{room},#{beginDate},#{endDate},#{masterId},#{subject})
     </insert>
 
+    <update id="updateClazz">
+        update clazz
+        <set>
+            <if test="name != null">name = #{name},</if>
+            <if test="room != null">room = #{room},</if>
+            <if test="beginDate != null">begin_date = #{beginDate},</if>
+            <if test="endDate != null">end_date = #{endDate},</if>
+            <if test="masterId != null">master_id = #{masterId},</if>
+            <if test="subject != null">subject = #{subject},</if>
+        </set>
+        where id = #{id}
+    </update>
+
     <delete id="deleteClazz">
         delete from clazz
         where id = #{id}
@@ -23,5 +36,11 @@
                 and end_date between #{begin} and #{end}
             </if>
         </where>
+    </select>
+
+    <select id="getClazzById" resultType="com.example.springboot_demo.pojo.Clazz">
+        select name, room, begin_date, end_date, master_id, subject, create_time, update_time
+        from clazz
+        where id = #{id}
     </select>
 </mapper>

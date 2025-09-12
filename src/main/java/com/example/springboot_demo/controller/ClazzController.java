@@ -24,6 +24,14 @@ public class ClazzController {
         return Result.success(p);
     }
 
+    @GetMapping("/{id}")
+    public Result getClazzById(@PathVariable Integer id){
+        log.info("查询id为{}的班级", id);
+
+        Clazz c = clazzService.getClazzById(id);
+        return Result.success(c);
+    }
+
     @DeleteMapping("/{id}")
     public Result deleteClazz(@PathVariable Integer id){
         log.info("删除id为{}的班级", id);
@@ -37,6 +45,14 @@ public class ClazzController {
         log.info("添加班级{}", clazz);
 
         clazzService.insertClazz(clazz);
+        return Result.success();
+    }
+
+    @PutMapping
+    public Result updateClazz(@RequestBody Clazz clazz){
+        log.info("更新班级{}", clazz);
+
+        clazzService.updateClazz(clazz);
         return Result.success();
     }
 }

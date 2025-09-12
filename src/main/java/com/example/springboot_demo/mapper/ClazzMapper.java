@@ -14,6 +14,11 @@ public interface ClazzMapper {
     List<Clazz> getClazz(ClazzQueryDto d);
 
     /**
+     * 根据id查询班级信息
+     */
+    Clazz getClazzById(Integer id);
+
+    /**
      * 添加班级信息
      */
     void insertClazz(Clazz clazz);
@@ -22,4 +27,9 @@ public interface ClazzMapper {
      * 根据id删除课程信息
      */
     void deleteClazz(Integer id);
+
+    /**
+     * 更新班级信息
+     */
+    void updateClazz(Clazz clazz);
 }

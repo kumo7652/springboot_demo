@@ -65,4 +65,29 @@ public class ClazzServiceImpl implements ClazzService {
         if (clazz.getName() == null) throw new IllegalArgumentException("班级为空，无法添加~");
         clazzMapper.insertClazz(clazz);
     }
+
+    @Override
+    public Clazz getClazzById(Integer id) {
+        return clazzMapper.getClazzById(id);
+    }
+
+    @Override
+    public void updateClazz(Clazz clazz) {
+        if (clazz.getName() == null) {
+            throw new IllegalArgumentException("班级名称不能为空");
+        }
+        if (clazz.getRoom() == null) {
+            throw new IllegalArgumentException("教室不能为空");
+        }
+        if (clazz.getBeginDate() == null) {
+            throw new IllegalArgumentException("开始日期不能为空");
+        }
+        if (clazz.getEndDate() == null) {
+            throw new IllegalArgumentException("结束日期不能为空");
+        }
+        if (clazz.getMasterId() == null) {
+            throw new IllegalArgumentException("班主任不能为空");
+        }
+        clazzMapper.updateClazz(clazz);
+    }
 }
